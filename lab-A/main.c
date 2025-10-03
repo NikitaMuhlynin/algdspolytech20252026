@@ -9,13 +9,13 @@ int main() {
 
     TemperatureList* list = create_temperature_list();
     if (!list) {
-        printf("Ошибка создания списка\n");
+        printf("РћС€РёР±РєР° СЃРѕР·РґР°РЅРёСЏ СЃРїРёСЃРєР°\n");
         return 1;
     }
 
     FILE* file = fopen("temperatures.txt", "r");
     if (!file) {
-        printf("Ошибка открытия файла\n");
+        printf("РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р°\n");
         destroy_temperature_list(list);
         return 1;
     }
@@ -31,28 +31,28 @@ int main() {
     }
     fclose(file);
 
-    printf("Прочитано %d записей\n\n", list->size);
+    printf("РџСЂРѕС‡РёС‚Р°РЅРѕ %d Р·Р°РїРёСЃРµР№\n\n", list->size);
 
     sort_temperatures(list);
 
-    printf("Дни с температурой ниже нуля:\n");
+    printf("Р”РЅРё СЃ С‚РµРјРїРµСЂР°С‚СѓСЂРѕР№ РЅРёР¶Рµ РЅСѓР»СЏ:\n");
     int negative_count = count_negative_temperatures(list);
     for (int i = 0; i < list->size; i++) {
         if (list->data[i].avg_temp < 0) {
-            printf("%s: %.1f°C\n", list->data[i].date, list->data[i].avg_temp);
+            printf("%s: %.1fВ°C\n", list->data[i].date, list->data[i].avg_temp);
         }
     }
-    printf("Всего: %d дней\n\n", negative_count);
+    printf("Р’СЃРµРіРѕ: %d РґРЅРµР№\n\n", negative_count);
 
     float search_temp;
-    printf("Введите температуру для поиска: ");
+    printf("Р’РІРµРґРёС‚Рµ С‚РµРјРїРµСЂР°С‚СѓСЂСѓ РґР»СЏ РїРѕРёСЃРєР°: ");
     scanf("%f", &search_temp);
 
     if (find_temperature(list, search_temp)) {
-        printf("Температура %.1f°C найдена в списке\n", search_temp);
+        printf("РўРµРјРїРµСЂР°С‚СѓСЂР° %.1fВ°C РЅР°Р№РґРµРЅР° РІ СЃРїРёСЃРєРµ\n", search_temp);
     }
     else {
-        printf("Температура %.1f°C не найдена\n", search_temp);
+        printf("РўРµРјРїРµСЂР°С‚СѓСЂР° %.1fВ°C РЅРµ РЅР°Р№РґРµРЅР°\n", search_temp);
     }
 
     destroy_temperature_list(list);

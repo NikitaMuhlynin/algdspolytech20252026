@@ -2,7 +2,7 @@
 #include <cstring>
 #include "temperature.h"
 
-// Вспомогательные функции для тестов
+// Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹Рµ С„СѓРЅРєС†РёРё РґР»СЏ С‚РµСЃС‚РѕРІ
 TemperatureList* create_sample_list() {
     TemperatureList* list = create_temperature_list();
     add_temperature(list, "2024-01-15", -5.0f);
@@ -11,7 +11,7 @@ TemperatureList* create_sample_list() {
     return list;
 }
 
-// Тест 1: Создание списка
+// РўРµСЃС‚ 1: РЎРѕР·РґР°РЅРёРµ СЃРїРёСЃРєР°
 TEST(TemperatureTest, CreateTemperatureList_ValidCreation_no1) {
     TemperatureList* list = create_temperature_list();
     ASSERT_NE(list, nullptr);
@@ -20,7 +20,7 @@ TEST(TemperatureTest, CreateTemperatureList_ValidCreation_no1) {
     destroy_temperature_list(list);
 }
 
-// Тест 2: Добавление в пустой список
+// РўРµСЃС‚ 2: Р”РѕР±Р°РІР»РµРЅРёРµ РІ РїСѓСЃС‚РѕР№ СЃРїРёСЃРѕРє
 TEST(TemperatureTest, AddTemperature_ToEmptyList_ReturnTrue_no2) {
     TemperatureList* list = create_temperature_list();
     int result = add_temperature(list, "2024-01-01", 5.0f);
@@ -31,7 +31,7 @@ TEST(TemperatureTest, AddTemperature_ToEmptyList_ReturnTrue_no2) {
     destroy_temperature_list(list);
 }
 
-// Тест 3: Добавление с невалидными параметрами
+// РўРµСЃС‚ 3: Р”РѕР±Р°РІР»РµРЅРёРµ СЃ РЅРµРІР°Р»РёРґРЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё
 TEST(TemperatureTest, AddTemperature_NullParameters_ReturnFalse_no3) {
     TemperatureList* list = create_temperature_list();
     int result = add_temperature(nullptr, "2024-01-01", 5.0f);
@@ -42,7 +42,7 @@ TEST(TemperatureTest, AddTemperature_NullParameters_ReturnFalse_no3) {
     destroy_temperature_list(list);
 }
 
-// Тест 4: Парсинг валидной строки
+// РўРµСЃС‚ 4: РџР°СЂСЃРёРЅРі РІР°Р»РёРґРЅРѕР№ СЃС‚СЂРѕРєРё
 TEST(TemperatureTest, ParseTemperatureLine_ValidLine_ReturnTrue_no4) {
     char date[MAX_DATE_LENGTH];
     float temp;
@@ -53,7 +53,7 @@ TEST(TemperatureTest, ParseTemperatureLine_ValidLine_ReturnTrue_no4) {
     EXPECT_FLOAT_EQ(temp, -5.5f);
 }
 
-// Тест 5: Парсинг невалидной строки
+// РўРµСЃС‚ 5: РџР°СЂСЃРёРЅРі РЅРµРІР°Р»РёРґРЅРѕР№ СЃС‚СЂРѕРєРё
 TEST(TemperatureTest, ParseTemperatureLine_InvalidLine_ReturnFalse_no5) {
     char date[MAX_DATE_LENGTH];
     float temp;
@@ -62,7 +62,7 @@ TEST(TemperatureTest, ParseTemperatureLine_InvalidLine_ReturnFalse_no5) {
     EXPECT_FALSE(result);
 }
 
-// Тест 6: Подсчет отрицательных температур
+// РўРµСЃС‚ 6: РџРѕРґСЃС‡РµС‚ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹С… С‚РµРјРїРµСЂР°С‚СѓСЂ
 TEST(TemperatureTest, CountNegativeTemperatures_MixedTemperatures_ReturnCorrectCount_no6) {
     TemperatureList* list = create_sample_list();
     int count = count_negative_temperatures(list);
@@ -70,7 +70,7 @@ TEST(TemperatureTest, CountNegativeTemperatures_MixedTemperatures_ReturnCorrectC
     destroy_temperature_list(list);
 }
 
-// Тест 7: Подсчет в пустом списке
+// РўРµСЃС‚ 7: РџРѕРґСЃС‡РµС‚ РІ РїСѓСЃС‚РѕРј СЃРїРёСЃРєРµ
 TEST(TemperatureTest, CountNegativeTemperatures_EmptyList_ReturnZero_no7) {
     TemperatureList* list = create_temperature_list();
     int count = count_negative_temperatures(list);
@@ -78,7 +78,7 @@ TEST(TemperatureTest, CountNegativeTemperatures_EmptyList_ReturnZero_no7) {
     destroy_temperature_list(list);
 }
 
-// Тест 8: Поиск существующей температуры
+// РўРµСЃС‚ 8: РџРѕРёСЃРє СЃСѓС‰РµСЃС‚РІСѓСЋС‰РµР№ С‚РµРјРїРµСЂР°С‚СѓСЂС‹
 TEST(TemperatureTest, FindTemperature_ExistingTemperature_ReturnTrue_no8) {
     TemperatureList* list = create_sample_list();
     int found = find_temperature(list, 10.0f);
@@ -86,7 +86,7 @@ TEST(TemperatureTest, FindTemperature_ExistingTemperature_ReturnTrue_no8) {
     destroy_temperature_list(list);
 }
 
-// Тест 9: Поиск несуществующей температуры
+// РўРµСЃС‚ 9: РџРѕРёСЃРє РЅРµСЃСѓС‰РµСЃС‚РІСѓСЋС‰РµР№ С‚РµРјРїРµСЂР°С‚СѓСЂС‹
 TEST(TemperatureTest, FindTemperature_NonExistingTemperature_ReturnFalse_no9) {
     TemperatureList* list = create_sample_list();
     int found = find_temperature(list, 999.0f);
@@ -94,7 +94,7 @@ TEST(TemperatureTest, FindTemperature_NonExistingTemperature_ReturnFalse_no9) {
     destroy_temperature_list(list);
 }
 
-// Тест 10: Сортировка температур
+// РўРµСЃС‚ 10: РЎРѕСЂС‚РёСЂРѕРІРєР° С‚РµРјРїРµСЂР°С‚СѓСЂ
 TEST(TemperatureTest, SortTemperatures_UnsortedList_SortedCorrectly_no10) {
     TemperatureList* list = create_temperature_list();
     add_temperature(list, "2024-03-01", 15.0f);
@@ -109,7 +109,7 @@ TEST(TemperatureTest, SortTemperatures_UnsortedList_SortedCorrectly_no10) {
     destroy_temperature_list(list);
 }
 
-// Тест 11: Поиск минимальной температуры
+// РўРµСЃС‚ 11: РџРѕРёСЃРє РјРёРЅРёРјР°Р»СЊРЅРѕР№ С‚РµРјРїРµСЂР°С‚СѓСЂС‹
 TEST(TemperatureTest, FindMinTemperature_ValidList_ReturnCorrectValue_no11) {
     TemperatureList* list = create_sample_list();
     float min_temp = find_min_temperature(list);
@@ -117,7 +117,7 @@ TEST(TemperatureTest, FindMinTemperature_ValidList_ReturnCorrectValue_no11) {
     destroy_temperature_list(list);
 }
 
-// Тест 12: Поиск максимальной температуры
+// РўРµСЃС‚ 12: РџРѕРёСЃРє РјР°РєСЃРёРјР°Р»СЊРЅРѕР№ С‚РµРјРїРµСЂР°С‚СѓСЂС‹
 TEST(TemperatureTest, FindMaxTemperature_ValidList_ReturnCorrectValue_no12) {
     TemperatureList* list = create_sample_list();
     float max_temp = find_max_temperature(list);
@@ -125,10 +125,10 @@ TEST(TemperatureTest, FindMaxTemperature_ValidList_ReturnCorrectValue_no12) {
     destroy_temperature_list(list);
 }
 
-// Тест 13: Расширение capacity при добавлении
+// РўРµСЃС‚ 13: Р Р°СЃС€РёСЂРµРЅРёРµ capacity РїСЂРё РґРѕР±Р°РІР»РµРЅРёРё
 TEST(TemperatureTest, AddTemperature_ExceedCapacity_ResizeSuccessfully_no13) {
     TemperatureList* list = create_temperature_list();
-    // Добавляем больше элементов, чем начальная capacity
+    // Р”РѕР±Р°РІР»СЏРµРј Р±РѕР»СЊС€Рµ СЌР»РµРјРµРЅС‚РѕРІ, С‡РµРј РЅР°С‡Р°Р»СЊРЅР°СЏ capacity
     for (int i = 0; i < 15; i++) {
         char date[MAX_DATE_LENGTH];
         snprintf(date, sizeof(date), "2024-01-%02d", i + 1);
