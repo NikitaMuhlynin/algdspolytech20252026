@@ -7,3 +7,5 @@
 *.so
 *.dylib
 *.obj
+*.pdb
+*.ilk
